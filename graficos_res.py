@@ -65,14 +65,16 @@ def t_detect(flag, tempo):
 # 1) Onda Simples com Marcação de SAG
 # ===============================================
 plt.figure(figsize=(14,6))
-plt.plot(tempo, onda, label="Tensão (Onda Senoidal)", alpha=0.7)
+plt.plot(tempo, onda, label="Tensão (Onda Senoidal)", linewidth=3)
 
 # Marcar regiões de SAG
 for t_start, t_end in sag_intervals:
     plt.axvspan(t_start, t_end, alpha=0.2, color="red", label="Região de SAG" if t_start == sag_intervals[0][0] else "")
 # Título: "Onda de Tensão com Marcação de SAG"
-plt.xlabel("Tempo (s)")
-plt.ylabel("Amplitude (V)")
+plt.xlabel("Tempo (s)", fontsize=13, fontweight="bold")
+plt.ylabel("Amplitude (V)", fontsize=13, fontweight="bold")
+plt.xticks(fontsize=11, fontweight="bold")
+plt.yticks(fontsize=11, fontweight="bold")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -83,17 +85,19 @@ plt.close()
 # 2) Onda + Comparação dos dois métodos de pico
 # ===============================================
 plt.figure(figsize=(14,6))
-plt.plot(tempo, onda, label="Tensão (Onda Senoidal)", alpha=0.7)
-plt.plot(tempo, pico_meio, label="Pico Meio Ciclo", linestyle="--")
-plt.plot(tempo, pico_ciclo, label="Pico Ciclo Completo", linestyle="--")
+plt.plot(tempo, onda, label="Tensão (Onda Senoidal)", linewidth=3)
+plt.plot(tempo, pico_meio, label="Pico Meio Ciclo", linestyle="--", linewidth=2)
+plt.plot(tempo, pico_ciclo, label="Pico Ciclo Completo", linestyle="--", linewidth=2)
 plt.axhline(y=limite, color="red", linestyle="--", linewidth=2.5, label=f"Limite 90% RMS ({limite:.2f}V)")
 
 # Marcar regiões de SAG
 for t_start, t_end in sag_intervals:
     plt.axvspan(t_start, t_end, alpha=0.2, color="red", label="Região de SAG" if t_start == sag_intervals[0][0] else "")
 # Título: "Comparação de Métodos de Pico"
-plt.xlabel("Tempo (s)")
-plt.ylabel("Amplitude")
+plt.xlabel("Tempo (s)", fontsize=13, fontweight="bold")
+plt.ylabel("Amplitude", fontsize=13, fontweight="bold")
+plt.xticks(fontsize=11, fontweight="bold")
+plt.yticks(fontsize=11, fontweight="bold")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -104,17 +108,19 @@ plt.close()
 # 3) Comparativo RMS bloco vs RMS pico-bloco
 # ===============================================
 plt.figure(figsize=(14,6))
-plt.plot(tempo, onda, label="Tensão")
-plt.plot(tempo, rms_bloco, label="RMS Bloco", linestyle="--")
-plt.plot(tempo, rms_pico_bloco, label="RMS Pico Bloco", linestyle="--")
+plt.plot(tempo, onda, label="Tensão", linewidth=3)
+plt.plot(tempo, rms_bloco, label="RMS Bloco", linestyle="--", linewidth=2)
+plt.plot(tempo, rms_pico_bloco, label="RMS Pico Bloco", linestyle="--", linewidth=2)
 plt.axhline(y=limite, color="red", linestyle="--", linewidth=2.5, label=f"Limite 90% RMS ({limite:.2f}V)")
 
 # Marcar regiões de SAG
 for t_start, t_end in sag_intervals:
     plt.axvspan(t_start, t_end, alpha=0.2, color="red", label="Região de SAG" if t_start == sag_intervals[0][0] else "")
 # Título: "RMS Bloco VS RMS Pico Bloco"
-plt.xlabel("Tempo (s)")
-plt.ylabel("Valor")
+plt.xlabel("Tempo (s)", fontsize=13, fontweight="bold")
+plt.ylabel("Valor", fontsize=13, fontweight="bold")
+plt.xticks(fontsize=11, fontweight="bold")
+plt.yticks(fontsize=11, fontweight="bold")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -125,17 +131,19 @@ plt.close()
 # 4) RMS Móvel Meio Ciclo x RMS Móvel Ciclo Completo
 # ===============================================
 plt.figure(figsize=(14,6))
-plt.plot(tempo, onda, label="Tensão")
-plt.plot(tempo, rms_movel_meio, label="RMS Móvel Meio Ciclo", linestyle="--")
-plt.plot(tempo, rms_movel_ciclo, label="RMS Móvel Ciclo Completo", linestyle="--")
+plt.plot(tempo, onda, label="Tensão", linewidth=3)
+plt.plot(tempo, rms_movel_meio, label="RMS Móvel Meio Ciclo", linestyle="--", linewidth=2)
+plt.plot(tempo, rms_movel_ciclo, label="RMS Móvel Ciclo Completo", linestyle="--", linewidth=2)
 plt.axhline(y=limite, color="red", linestyle="--", linewidth=2.5, label=f"Limite 90% RMS ({limite:.2f}V)")
 
 # Marcar regiões de SAG
 for t_start, t_end in sag_intervals:
     plt.axvspan(t_start, t_end, alpha=0.2, color="red", label="Região de SAG" if t_start == sag_intervals[0][0] else "")
 # Título: "RMS Móvel: Meio Ciclo vs Ciclo Completo"
-plt.xlabel("Tempo (s)")
-plt.ylabel("Valor")
+plt.xlabel("Tempo (s)", fontsize=13, fontweight="bold")
+plt.ylabel("Valor", fontsize=13, fontweight="bold")
+plt.xticks(fontsize=11, fontweight="bold")
+plt.yticks(fontsize=11, fontweight="bold")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -178,21 +186,28 @@ handles = []
 labels = []
 
 for ax, (nome, flag, cor) in zip(axes, lista_ordenada):
-    h, = ax.plot(tempo, flag, color=cor, linewidth=1.7)
-    ax.set_ylabel("Flag")
-    ax.set_title(nome + f" (t={tempo_detect(flag, tempo):.4f}s)")
+    h, = ax.plot(tempo, flag, color=cor, linewidth=2.5)
+    ax.set_ylabel("Flag", fontsize=11, fontweight="bold")
+    ax.set_title(nome + f" (t={tempo_detect(flag, tempo):.4f}s)", fontsize=12, fontweight="bold")
+    ax.tick_params(axis='both', which='major', labelsize=11)
+    for label in ax.get_xticklabels():
+        label.set_fontweight('bold')
+    for label in ax.get_yticklabels():
+        label.set_fontweight('bold')
     ax.grid(True)
 
     handles.append(h)
     labels.append(nome)
 
-axes[-1].set_xlabel("Tempo (s)")
+axes[-1].set_xlabel("Tempo (s)", fontsize=13, fontweight="bold")
 
 # Título: "Flags de Detecção Organizadas do Mais Rápido ao Mais Lento"
 plt.tight_layout()
 
 # Legenda única
-fig.legend(handles, labels, loc="lower center", ncol=3, fontsize=12, bbox_to_anchor=(0.5, -0.05))
+legend = fig.legend(handles, labels, loc="lower center", ncol=3, fontsize=12, bbox_to_anchor=(0.5, -0.05))
+for text in legend.get_texts():
+    text.set_fontweight('bold')
 
 plt.savefig(f"{pasta}/05_flags_subplots.png", dpi=300)
 plt.close()
@@ -231,9 +246,14 @@ cores_ordered = [item[2] for item in tempos_com_info_sorted]
 erros_deteccao_ordered = [td - tempo_sag_real if not np.isnan(td) else np.nan for td in tempos_deteccao_ordered]
 
 fig, ax = plt.subplots(figsize=(14, 6))
-bars = ax.bar(metodos_nomes_ordered, erros_deteccao_ordered, color=cores_ordered, alpha=0.7, edgecolor="black", linewidth=1.5)
-ax.axhline(y=0, color="black", linestyle="-", linewidth=2)
-ax.set_ylabel("Delay (s)", fontsize=12, fontweight="bold")
+bars = ax.bar(metodos_nomes_ordered, erros_deteccao_ordered, color=cores_ordered, alpha=0.7, edgecolor="black", linewidth=2)
+ax.axhline(y=0, color="black", linestyle="-", linewidth=2.5)
+ax.set_ylabel("Delay (s)", fontsize=13, fontweight="bold")
+ax.tick_params(axis='both', which='major', labelsize=11, colors='black')
+for label in ax.get_xticklabels():
+    label.set_fontweight('bold')
+for label in ax.get_yticklabels():
+    label.set_fontweight('bold')
 # Título: "Erro de Detecção - Delay relativo ao SAG Real (Mais Rápido → Mais Lento)"
 ax.grid(True, alpha=0.3, axis="y")
 
