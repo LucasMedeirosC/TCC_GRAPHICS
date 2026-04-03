@@ -23,7 +23,10 @@ TCC_GRAPHICS/
 ├── output/
 │   └── dados_rms.csv       # Dados de saída da simulação
 ├── imagens_metodologia/    # Figuras explicativas de janelas
-└── imagens_resultados/     # Figuras finais de comparação
+├── imagens_resultados/     # Figuras finais de comparação
+├── imagens_resultados_cenario1_start/
+├── imagens_resultados_cenario2_back/
+└── imagens_resultados_cenario3_front/
 ```
 
 ## Dependências
@@ -93,6 +96,16 @@ Saída em `imagens_resultados/`:
 - `04_rms_movel_comparativo.png`
 - `05_flags_subplots.png`
 - `06_erro_deteccao.png`
+
+### Cenários de análise
+
+Além do conjunto base em `imagens_resultados/`, o projeto também organiza os mesmos gráficos em três pastas de cenário:
+
+- `imagens_resultados_cenario1_start/`
+- `imagens_resultados_cenario2_back/`
+- `imagens_resultados_cenario3_front/`
+
+Essas pastas agrupam as imagens dos três casos de estudo usados na análise do SAG, facilitando a comparação visual entre as posições do evento.
 
 ## Métodos comparados
 
